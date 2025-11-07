@@ -1,5 +1,5 @@
 import app from "#app";
-import db from "#db/client";
+import db from "../db/client";
 import request from "supertest";
 import {
   afterAll,

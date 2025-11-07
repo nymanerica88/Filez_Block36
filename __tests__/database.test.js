@@ -1,4 +1,4 @@
-import db from "#db/client";
+import db from "../db/client";
 import { afterAll, beforeAll, describe, expect, test } from "vitest";
 
 beforeAll(async () => {

@@ -1,11 +1,11 @@
 import express from "express";
-import { getFolders, getFolder, doesFolderExist } from "#db/queries/folders";
-import { getFilesByFolder, createFiles } from "#db/queries/files";
+import { getFolders, getFolder, doesFolderExist } from "../db/queries/folders.js";
+import { getFilesByFolder, createFiles } from "../db/queries/files.js";
 
-const foldersRouter = express.Router();
+const folderRouter = express.Router();
 
 //GET folders router
-router.get("/", async (req, res, next) => {
+folderRouter.get("/", async (req, res, next) => {
     try {
         const folders = await getFolders();
         res.json(employees);
@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
 
 //GET /folders/:id router
 //'...' spreads all of the key-value pairs of folder into a new object
-router.get("/:id", async (req, res, next) => {
+folderRouter.get("/:id", async (req, res, next) => {
     const folderId = parseInt(req.params.id);
     try {
         const folder = await getFolder(folderId);
@@ -31,7 +31,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //POST /folders/:id/files to add new file to a folder
-router.post("/:id/files", async (req, res, next) => {
+folderRouter.post("/:id/files", async (req, res, next) => {
     const folder_id = folderId
     const folderId = parseInt(req.params.id);
     const {name, size} = req.body || {};
@@ -50,4 +50,4 @@ router.post("/:id/files", async (req, res, next) => {
 });
 
 
-export default foldersRouter;
+export default folderRouter;

@@ -1,6 +1,7 @@
+import dotenv from 'dotenv';
 import express from "express";
-import { folderRouter } from "./api/folders.js"
-import { fileRouter } from "./api/files.js"
+import folderRouter from "./api/folders.js"
+import fileRouter from "./api/files.js"
 
 const app = express();
 

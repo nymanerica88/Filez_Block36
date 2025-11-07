@@ -1,15 +1,13 @@
-import express, { request } from "express";
-import { getFiles } from "#db/queries/files";
+import express from "express";
+import { getFiles, createFiles } from "../db/queries/files.js";
 
 const fileRouter = express.Router();
 
-import { createFiles } from "#db/queries/files";
-
 // GET /files router
-router.get("/",async (request, resizeBy, next) => {
+fileRouter.get("/",async (req, res, next) => {
     try {
         const files = await getFiles();
-        resizeBy.json(files);
+        res.json(files);
     } catch (error) {
         next(error);
     }

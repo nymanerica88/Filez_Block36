@@ -1,4 +1,4 @@
-import db from "..client.js"
+import db from "../client.js"
 
 export async function createFiles({name, size, folder_id}) {
     try {

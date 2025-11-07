@@ -1,4 +1,4 @@
-import db from "..client.js"
+import db from "../client.js"
 
 export async function createFolder({name}) {
     try {
