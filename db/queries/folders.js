@@ -2,10 +2,11 @@ import db from "..client.js"
 
 export async function createFolder({name}) {
     try {
-        const sql =
-        `INSERT INTO folders (name)
+        const sql =`
+        INSERT INTO folders (name)
         VALUES ($1)
-        RETURNING *;`
+        RETURNING *;
+        `;
 
         const values = [name];
         const {rows} =await db.query(sql, values);
@@ -27,10 +28,11 @@ export async function getFolders() {
 
 export async function getFolders(id) {
     try {
-        const sql =    
-        `SELECT * 
+        const sql =`
+        SELECT * 
         FROM folders
-        WHERE id = $1;`
+        WHERE id = $1;
+        `;
 
         const values = [id];
         const {rows} = await db.query(sql, values);
