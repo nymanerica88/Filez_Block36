@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 });
 
 //GET /folders/:id router
-//... spreads all of the key-value pairs of folder into a new object
+//'...' spreads all of the key-value pairs of folder into a new object
 router.get("/:id", async (req, res, next) => {
     const folderId = parseInt(req.params.id);
     try {
