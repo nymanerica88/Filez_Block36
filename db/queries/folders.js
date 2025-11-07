@@ -26,7 +26,7 @@ export async function getFolders() {
     }
 }
 
-export async function getFolders(id) {
+export async function getFolder(id) {
     try {
         const sql =`
         SELECT * 
@@ -39,6 +39,21 @@ export async function getFolders(id) {
         return rows [0];
     } catch (error) {
         console.error(`Error getting folder by id`, error);
+        throw error;
+    }
+}
+
+export async function doesFolderExist(id) {
+    try {
+        const sql = `
+        SELECT 1 FROM folders WHERE id = $1;
+        `;
+
+        const values = [id];
+        const result = await db.query(sql, values);
+        return result.rowCount > 0;
+    } catch (error) {
+        console.error("Error checking folder existence",error);
         throw error;
     }
 }
