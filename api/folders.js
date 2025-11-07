@@ -8,7 +8,7 @@ const folderRouter = express.Router();
 folderRouter.get("/", async (req, res, next) => {
     try {
         const folders = await getFolders();
-        res.json(employees);
+        res.status(200).json(folders);
     } catch (error) {
         next(error);
     }
@@ -24,7 +24,7 @@ folderRouter.get("/:id", async (req, res, next) => {
 
         const files = await getFilesByFolder(folderId);
 
-        res.json({...folder, files});
+        res.status(200).json({...folder,files});
     } catch (error) {
         next (error);
     }
@@ -32,8 +32,8 @@ folderRouter.get("/:id", async (req, res, next) => {
 
 //POST /folders/:id/files to add new file to a folder
 folderRouter.post("/:id/files", async (req, res, next) => {
-    const folder_id = folderId
     const folderId = parseInt(req.params.id);
+    const folder_id = folderId
     const {name, size} = req.body || {};
     const exist = await doesFolderExist(folderId);
 
@@ -43,7 +43,7 @@ folderRouter.post("/:id/files", async (req, res, next) => {
         if (!name || !size) return res.status(400).json({error:"Missing required fields (name & size)"});
         
         const newFile = await createFiles({name, size, folder_id});
-        res.status(201).json(newfile);
+        res.status(201).json(newFile);
     } catch (error) {
         next(error);
     }

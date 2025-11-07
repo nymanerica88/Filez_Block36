@@ -11,6 +11,7 @@ export async function createFolder({name}) {
         const values = [name];
         const {rows} =await db.query(sql, values);
         console.log("New Folder Added:", rows[0]);
+        return rows [0];
     } catch (error) {
         console.error("Error Creating New Folder", error);
         throw error;        
