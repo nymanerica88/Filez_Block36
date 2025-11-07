@@ -2,7 +2,7 @@ import express from "express";
 import { getFolders, getFolder, doesFolderExist } from "#db/queries/folders";
 import { getFilesByFolder, createFiles } from "#db/queries/files";
 
-const router = express.Router();
+const foldersRouter = express.Router();
 
 //GET folders router
 router.get("/", async (req, res, next) => {
@@ -50,4 +50,4 @@ router.post("/:id/files", async (req, res, next) => {
 });
 
 
-export default router;
+export default foldersRouter;
